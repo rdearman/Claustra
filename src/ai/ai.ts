@@ -2,6 +2,12 @@ import { Action, applyAction, availableActions, Color, GameState, occupied, othe
 import { getBoard } from '../engine/boards';
 
 export type Difficulty = 'easy' | 'medium' | 'hard';
+/** Quick, rules-engine-generated recovery action if the background worker fails. */
+export function firstLegalAction(state: GameState): Action {
+  const action = availableActions(state)[0];
+  if (!action) throw new Error('No action available');
+  return action;
+}
 function score(state: GameState, root: Color): number {
   if (state.outcome === root) return 100000; if (state.outcome === other(root)) return -100000; if (state.outcome === 'draw') return 0;
   const board=getBoard(state.boardId);

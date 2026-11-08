@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { applyAction, availableActions, createInitialState, GameSnapshot, GameState, legalActions, Vertex } from './engine/engine';
 import { BOARD_DEFINITIONS, getBoard } from './engine/boards';
 import { replaySnapshots } from './engine/replay';
-import { chooseAction, Difficulty } from './ai/ai';
+import { firstLegalAction, Difficulty } from './ai/ai';
 import { formatGameHistory, formatGameRecord, vertexToTDAN } from './notation/tdan';
 import './styles.css';
 
@@ -64,17 +64,37 @@ function App() {
 
   const computerTurn = !replaying && mode==='computer' && state.turn!==human && !state.outcome;
   useEffect(()=>{
-    if(!computerTurn||thinking)return;
+    if(!computerTurn)return;
     setThinking(true);
-    const worker=new Worker(new URL('./ai/worker.ts',import.meta.url),{type:'module'});
+    const fallbackAction=firstLegalAction(state);
+    let worker:Worker;
+    try { worker=new Worker(new URL('./ai/worker.ts',import.meta.url),{type:'module'}); }
+    catch {
+      setState(current=>current===state?applyAction(current,fallbackAction):current);
+      setThinking(false);
+      return;
+    }
     let finished=false;
-    const fallback=()=>{if(finished)return;finished=true;worker.terminate();try{setState(s=>applyAction(s,chooseAction(s,difficulty,s.history.length)));}finally{setThinking(false);}};
+    const fallback=()=>{
+      if(finished)return;
+      finished=true;window.clearTimeout(timeout);worker.terminate();
+      setState(current=>current===state?applyAction(current,fallbackAction):current);
+      setThinking(false);
+    };
     const timeout=window.setTimeout(fallback,8000);
-    worker.onmessage=e=>{if(finished)return;finished=true;window.clearTimeout(timeout);setState(s=>applyAction(s,e.data));setThinking(false);worker.terminate();};
+    worker.onmessage=e=>{
+      if(finished)return;
+      try {
+        const next=applyAction(state,e.data);
+        finished=true;window.clearTimeout(timeout);worker.terminate();
+        setState(current=>current===state?next:current);setThinking(false);
+      } catch { fallback(); }
+    };
     worker.onerror=fallback;
-    worker.postMessage({state,difficulty,seed:state.history.length});
-    return()=>{finished=true;window.clearTimeout(timeout);worker.terminate();};
-  },[computerTurn,state,difficulty,thinking]);
+    try { worker.postMessage({state,difficulty,seed:state.history.length}); }
+    catch { fallback(); }
+    return()=>{finished=true;window.clearTimeout(timeout);worker.terminate();setThinking(false);};
+  },[computerTurn,state,difficulty]);
   useEffect(()=>{if(!autoplay)return;const timer=window.setInterval(()=>setReplayIndex(i=>{const next=(i??0)+1;if(next>=replayStates.length-1){setAutoplay(false);return replayStates.length-1;}return next;}),900);return()=>window.clearInterval(timer);},[autoplay,replayStates.length]);
 
   const actions=useMemo(()=>viewState.pendingReturns?availableActions(viewState):legalActions(viewState),[viewState]);

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { BOARD_DEFINITIONS } from './boards';
-import { applyAction, checkVictory, createInitialState, legalActions, occupied, GameState } from './engine';
-import { chooseAction } from '../ai/ai';
+import { applyAction, availableActions, checkVictory, createInitialState, legalActions, occupied, GameState } from './engine';
+import { chooseAction, firstLegalAction } from '../ai/ai';
 
 const bh=BOARD_DEFINITIONS.BH24;
 const arrangeBH=(placement:Record<string,string>)=>{const base=createInitialState('BH24');const pieces=Object.fromEntries(Object.entries(base.pieces).map(([id,p])=>[id,{...p,position:placement[id]??null}]));return {...base,pieces,turn:'white'} as GameState;};
@@ -50,5 +50,13 @@ describe('Boxed Hexagram board definition and rules',()=>{
     expect(tdAction.kind).toBe('move');expect(bhAction.kind).toBe('move');
     const moved=applyAction(bhState,bhAction);
     expect(moved.boardId).toBe('BH24');expect(td.boardId).toBe('TD19');expect(Object.values(moved.pieces).filter(p=>p.position)).toHaveLength(8);
+  });
+  it('provides a fast legal recovery action for both boards when the AI worker fails',()=>{
+    for(const boardId of ['TD19','BH24']){
+      const state=createInitialState(boardId);
+      const action=firstLegalAction(state);
+      expect(availableActions(state)).toContainEqual(action);
+      expect(()=>applyAction(state,action)).not.toThrow();
+    }
   });
 });
