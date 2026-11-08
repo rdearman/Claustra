@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Claustra</string>
+    <string name="title_activity_main">Claustra</string>
+    <string name="package_name">com.claustra.twodiamond</string>
+    <string name="custom_url_scheme">com.claustra.twodiamond</string>
+</resources>

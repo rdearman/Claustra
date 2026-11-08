@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1050" viewBox="0 0 1000 1050">
+<rect width="1000" height="1050" fill="#faf8f2"/>
+<text x="500" y="54" font-family="Arial,sans-serif" font-size="31" text-anchor="middle" font-weight="700" fill="#242424">TWO-DIAMOND STRATEGY GAME</text>
+<text x="500" y="88" font-family="Arial,sans-serif" font-size="18" text-anchor="middle" fill="#555">19 playable vertices · White moves first · Both colours may use all square vertices</text>
+<polyline points="200,160 450,160 700,160" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="200,160 200,320 200,480 200,640 200,800" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="700,160 700,320 700,480 700,640 700,800" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="200,800 450,800 700,800" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="80,380 80,480 80,580" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="820,380 820,480 820,580" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="80,480 200,480 450,480 700,480 820,480" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="450,160 200,320" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="450,160 700,320" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="200,320 450,480 700,640" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="700,320 450,480 200,640" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="200,640 450,800" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="700,640 450,800" fill="none" stroke="#3c4952" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="200" cy="160" r="17" fill="#ffffff" stroke="#c05d31" stroke-width="4"/>
+<text x="162" y="143" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">NW</text>
+<circle cx="450" cy="160" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="450" y="131" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">T</text>
+<circle cx="700" cy="160" r="17" fill="#ffffff" stroke="#c05d31" stroke-width="4"/>
+<text x="725" y="143" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">NE</text>
+<circle cx="200" cy="320" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="165" y="310" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">UL</text>
+<circle cx="700" cy="320" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="723" y="310" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">UR</text>
+<circle cx="200" cy="480" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="165" y="470" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">LM</text>
+<circle cx="450" cy="480" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="464" y="464" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">C</text>
+<circle cx="700" cy="480" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="723" y="470" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">RM</text>
+<circle cx="200" cy="640" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="165" y="630" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">LL</text>
+<circle cx="700" cy="640" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="723" y="630" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">LR</text>
+<circle cx="200" cy="800" r="17" fill="#242424" stroke="#277b80" stroke-width="4"/>
+<text x="162" y="829" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">SW</text>
+<circle cx="450" cy="800" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="450" y="834" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">B</text>
+<circle cx="700" cy="800" r="17" fill="#242424" stroke="#277b80" stroke-width="4"/>
+<text x="725" y="829" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">SE</text>
+<circle cx="80" cy="380" r="17" fill="#ffffff" stroke="#c05d31" stroke-width="4"/>
+<text x="26" y="365" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">OLT</text>
+<circle cx="80" cy="480" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="26" y="465" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">OLM</text>
+<circle cx="80" cy="580" r="17" fill="#242424" stroke="#277b80" stroke-width="4"/>
+<text x="26" y="565" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">OLB</text>
+<circle cx="820" cy="380" r="17" fill="#ffffff" stroke="#c05d31" stroke-width="4"/>
+<text x="843" y="365" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">ORT</text>
+<circle cx="820" cy="480" r="7" fill="#faf8f2" stroke="#26313a" stroke-width="2"/>
+<text x="843" y="465" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">ORM</text>
+<circle cx="820" cy="580" r="17" fill="#242424" stroke="#277b80" stroke-width="4"/>
+<text x="843" y="565" font-family="Consolas,monospace" font-weight="600" font-size="17" fill="#30363b">ORB</text>
+<text x="200" y="948" font-family="Arial,sans-serif" font-size="20" fill="#222">◯ White starts: NW, NE, OLT, ORT</text>
+<text x="200" y="978" font-family="Arial,sans-serif" font-size="20" fill="#222">● Black starts: SW, SE, OLB, ORB</text>
+<text x="200" y="1008" font-family="Arial,sans-serif" font-size="17" fill="#555">External tips only are colour-restricted: OLT, ORT, OLB, ORB</text>
+</svg>

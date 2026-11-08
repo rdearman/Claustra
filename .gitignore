@@ -1,0 +1,10 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+android/local.properties
+android/signing.properties
+android/**/*.jks
+android/**/*.keystore
+android/app/build/
+android/.gradle/
