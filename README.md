@@ -13,6 +13,15 @@ The development server is Vite. Gameplay state is saved in browser local storage
 
 The complete move history remains available after a win or draw. Use the Replay controls to step through the recorded board states or play them automatically. Replay restores snapshots captured during play; it does not parse or re-run the move notation. The Board inspector shows the exact state at the selected replay position. TDAN and JSON export buttons are available below the history.
 
+## Touch-first interface
+
+The shared React interface is optimized for phone play: drag a stone to a highlighted legal destination, or tap a stone and then its destination. Gameplay stays within the visible screen, uses Android/browser safe-area insets, and rearranges the compact controls for landscape. Home, setup, history/replay, rules, settings and the board inspector are available from focused sheets rather than permanent side panels. Both board definitions use the same SVG renderer and engine-supplied legal actions.
+
+Example responsive gameplay captures (Boxed Hexagram):
+
+- [Portrait gameplay](screenshots/gameplay-portrait.png)
+- [Landscape gameplay](screenshots/gameplay-landscape.png)
+
 ## Verify and build
 
 ```bash
@@ -44,6 +53,7 @@ The dedicated Claustra upload keystore is stored outside the repository at `/hom
 - Victory uses only the three non-central vertices of the opponent's diamond: White targets `LL`, `LR`, `B`; Black targets `T`, `UL`, `UR`. The shared `C` remains playable but never counts toward victory.
 - `src/ai` has a seeded easy choice, heuristic medium choice, and bounded depth-3 alpha-beta hard search with a transposition table. The hard search treats defender return choices as actual turns in the transition tree; it is intentionally bounded for mobile responsiveness.
 - `src/main.tsx` is the shared responsive interface used by web and Capacitor Android.
+- `src/ui/BoardView.tsx` renders both board definitions and handles pointer/touch gestures; `src/ui/board-geometry.ts` contains testable gesture, hit-testing and viewport geometry helpers.
 - Game snapshots and replay frames store the board ID and definition version. Exports include `[Board "TD19"]` or `[Board "BH24"]`; legacy records without a board header import as TD19.
 - `npm run simulate:bh24` runs eight seeded computer-vs-computer diagnostics. In the recorded check, White won game 1 after 124 plies and Black won game 4 after 217 plies; the remaining six hit the simulation's 600-ply diagnostic cutoff and are reported unresolved. That cutoff is only for simulation reporting and does not constrain gameplay.
 - Save/restore uses local storage in the UI shell; normal gameplay needs no server or network.
